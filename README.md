@@ -4,16 +4,16 @@ TTS bot for Twitch chat for user messages and channel rewards, using Google Clou
 ## Features:
 
 * Random Google Voice by filters
-- Test voices [Here](https://cloud.google.com/text-to-speech):
-- You can set voice filter for all users in `config.yaml`
-- Use `users.yaml` to set voice filter for individual users
-- Available options:
-  - Exactly one voice - `voice_filter: en-US-Standart-A` 
-  - By language - `voice_filter: en-US` 
-  - By type - `voice_filter: Wavenet` 
-  - By both type and language - `voice_filter: en-US-Wavenet` 
-  - Set `''` if you want any available voice - `voice_filter: ''`
-  - Also you can use list of filter options - `voice_filter: [en-US-Wavenet, nl-NL-Standart, ru-RU, ]`
+  - Test voices [Here](https://cloud.google.com/text-to-speech):
+  - You can set voice filter for all users in `config.yaml`
+  - Use `users.yaml` to set voice filter for individual users
+  - Available options:
+    - Exactly one voice - `voice_filter: en-US-Standart-A` 
+    - By language - `voice_filter: en-US` 
+    - By type - `voice_filter: Wavenet` 
+    - By both type and language - `voice_filter: en-US-Wavenet` 
+    - Set `''` if you want any available voice - `voice_filter: ''`
+    - Also you can use list of filter options - `voice_filter: [en-US-Wavenet, nl-NL-Standart, ru-RU, ]`
 
 
 * Random speaking rate and pitch for voice from range
@@ -58,11 +58,11 @@ TTS bot for Twitch chat for user messages and channel rewards, using Google Clou
  
 
 
-## Requirements: 
+# Requirements: 
 * You need [Google Cloud Account](https://cloud.google.com/free) to use [Text-To-Speech API](https://cloud.google.com/text-to-speech).
 * Since for TTS playback was used [pydub](https://github.com/jiaaro/pydub) + [simpleaudio](https://github.com/hamiltron/py-simple-audio) libs, you'll need to install [ffmpeg](http://www.ffmpeg.org/) or [libav](http://libav.org/).
 
-### Google Cloud Setup:
+## Google Cloud Setup:
 
 1. First you need google cloud account. Register free account [Here](https://cloud.google.com/free).
 2. Create a project or use existing on in the [Cloud Console](https://console.cloud.google.com/).
@@ -88,9 +88,9 @@ but I suggest you to set up 0$ budget just in case.
 .json file, rename it to **gcp.json** and save it, we will need it later.
 8. Don't share your service account key for obvious security purposes.
 
-### Getting ffmpeg / libav set up:
+## Getting ffmpeg / libav set up:
 
-#### Windows:
+### Windows:
 
 ffmpeg:
 1. Download and extract ffmpeg using [Windows builds from here](https://ffmpeg.org/download.html#build-windows).
@@ -100,7 +100,7 @@ libav:
 1. Download and extract libav from [Windows binaries provided here](http://builds.libav.org/windows/).
 2. Add the libav `/bin` folder to your PATH envvar
 
-#### Mac (using [homebrew](http://brew.sh)):
+### Mac (using [homebrew](http://brew.sh)):
 
 ```bash
 # libav
@@ -112,7 +112,7 @@ brew install libav
 brew install ffmpeg
 ```
 
-#### Linux (using aptitude):
+### Linux (using aptitude):
 
 ```bash
 # libav
@@ -124,9 +124,9 @@ apt-get install libav-tools libavcodec-extra
 apt-get install ffmpeg libavcodec-extra
 ```
 
-## Download: [Releases](https://github.com/damaskar/TwitchTTS/releases)
+# Download: [Releases](https://github.com/damaskar/TwitchTTS/releases)
 
-## Setup:
+# Setup:
 1. Make sure you have [requirements](#Requirements:) listed above (gcp.json in configs folder and ffmpeg/libav).
 2. Download the latest release and extract release to any folder on your pc.
 3. Replace example gcp.json with your Service account key from [requirements](#Requirements:) in **TTS Folder\configs**. 
@@ -139,8 +139,9 @@ apt-get install ffmpeg libavcodec-extra
     - You will get reward ID in console
     - Put that reward ID into config.yaml
 
-## Changelog:
+
+# Changelog:
 - **v1.0**, 27.05.2022
   - Initial release
 
-## If you want to support me, click here: [Donate](https://www.donationalerts.com/r/damaskarr)
+# If you want to support me, click here: [Donate](https://www.donationalerts.com/r/damaskarr)
