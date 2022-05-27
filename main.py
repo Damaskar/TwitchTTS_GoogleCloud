@@ -208,8 +208,8 @@ def speach():
 if __name__ == '__main__':
     """Print configuration and voices"""
     try:
-        print('Configuration - Channel:', Fc.channel, 'Bot username:', Fc.bot_username, 'Bot token:',
-              Fc.bot_token[6:9] + '*' * (len(Fc.bot_token) - 9), 'TTS Reward ID:', Fc.tts_reward_id)
+        print('\nChannel:', Fc.channel, '\nBot username:', Fc.bot_username, '\nBot token:',
+              Fc.bot_token[6:9] + '*' * (len(Fc.bot_token) - 9), '\nTTS Reward ID:', Fc.tts_reward_id)
         print('\nFiltered voices for TTS:')
         pprint(utils.default_voices())
 
