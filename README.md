@@ -1,4 +1,4 @@
-# TwitchTTS Bot
+# TwitchTTS with Google Cloud Text-to-Speech
 TTS bot for Twitch chat for user messages and channel rewards, using Google Cloud Text-to-Speech API
 
 ## Features:
