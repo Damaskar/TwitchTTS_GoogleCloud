@@ -1,0 +1,20 @@
+###################### Description ######################
+#
+# List of whitelisted users
+#
+# Users from whitelist can use TTS with prefix even if they are not mod, vip or sub
+#
+# This list supports two ways to fill names:
+#   In one row:
+#       [nickname1, nickname2, nickname3]
+#
+#   Or each nickname on new row
+#       - nickname1
+#       - nickname2
+#       - nickname3
+#
+#########################################################
+
+- nickname1
+- nickname2
+- nickname3

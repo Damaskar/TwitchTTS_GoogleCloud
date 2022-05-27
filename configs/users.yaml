@@ -1,0 +1,49 @@
+###################### Description ######################
+#
+# List for custom TTS setting per user
+#
+# Options:
+#
+#    username - Nickname of twitch user
+#
+#    voice_filter - Filter options for TTS voice.
+#       Available options:
+#          1. Exactly one voice - voice_filter: en-US-Standart-A
+#          2. By language - voice_filter: en-US
+#          3. By type - voice_filter: Wavenet
+#          4. By both type and language - voice_filter: en-US-Wavenet
+#          5. Set '' if you want any available voice - voice_filter: ''
+#          6. Also filter supports list of options - voice_filter: [en-US-Wavenet, nl-NL-Standart, ru-RU]
+#
+#    low_speaking_rate and high_speaking_rate - Speaking rate range.
+#       Support numbers from 0.25 to 4.
+#       You can set same number on both low and high options for flat speaking rate.
+#
+#    low_pitch and high_pitch - Pitch range.
+#       Support numbers from -20 to 20.
+#       You can set same number on both low and high options for flat speaking rate.
+#
+#
+######### Example configuration for three users with nicknames "Eric", "Sam" and "Bob" #########
+
+Eric:
+     voice_filter: [ru-RU-Wavenet, en-US-Wavenet-B, nl-NL-Wavenet-A]
+     low_speaking_rate: 0.8
+     high_speaking_rate: 1.1
+     low_pitch: -4
+     high_pitch: -2
+
+Bob:
+     voice_filter: Wavenet
+     low_speaking_rate: 0.6
+     high_speaking_rate: 1.2
+     low_pitch: 10
+     high_pitch: 10
+
+Sam:
+     voice_filter: ''
+     low_speaking_rate: 2
+     high_speaking_rate: 2
+     low_pitch: -20
+     high_pitch: 20
+

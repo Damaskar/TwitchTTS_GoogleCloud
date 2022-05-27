@@ -1,0 +1,6 @@
+pyyaml
+pydub
+simpleaudio
+irc
+google-cloud-texttospeech
+google-cloud-core

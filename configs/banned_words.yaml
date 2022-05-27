@@ -1,0 +1,20 @@
+###################### Description ######################
+#
+# List of banned words
+#
+# If TTS message have one of words from this list - nothing will happen.
+#
+# This list supports two ways to fill words:
+#   In one row:
+#       [badword1, badword2, badword3]
+#
+#   Or each word on new row
+#       - badword1
+#       - badword2
+#       - badword3
+#
+#########################################################
+
+- badword1
+- badword2
+- badword3

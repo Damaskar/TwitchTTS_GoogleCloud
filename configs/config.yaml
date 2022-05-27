@@ -1,0 +1,77 @@
+###################### Description ######################
+#
+# Main configuration file
+#
+# Options:
+#
+#    channel - Channel name for TTS.
+#    bot_username - Bot will connect to chat with that twitch user.
+#    bot_token - Auth chat token for twitch user you setted up in previous option. You can get it here: https://twitchapps.com/tmi/
+#
+#    tts_reward - ID of twitch points reward for TTS. Start bot and redeem reward you want to use for TTS, you will get ID in console.
+#
+#    voice_filter - Filter options for TTS voice.
+#       Available options:
+#          1. Exactly one voice - voice_filter: en-US-Standart-A
+#          2. By language - voice_filter: en-US
+#          3. By type - voice_filter: Wavenet
+#          4. By both type and language - voice_filter: en-US-Wavenet
+#          5. Set '' if you want any available voice - voice_filter: ''
+#          6. Also filter supports list of options - voice_filter: [en-US-Wavenet, nl-NL-Standart, ru-RU, ]
+#
+#    low_speaking_rate and high_speaking_rate - Speaking rate range.
+#       Support numbers from 0.25 to 4.
+#       You can set same number on both low and high options for flat speaking rate.
+#
+#    low_pitch and high_pitch - Pitch range.
+#       Support numbers from -20 to 20.
+#       You can set same number on both low and high options for flat speaking rate.
+#
+#    use_whitelist - Enable whitelist.
+#       Fill whitelist_users.yaml with nicknames.
+#       Users from whitelist can use TTS with prefix even if they are not mod, vip or sub
+#
+#    use_mod_commands - Enable chat commands for moderators and broadcaster.
+#       You can manually fill blocked_users.yaml for blacklist or whitelist_users.yaml for whitelist
+#       Available options:
+#          1. !stoptts - Stop current TTS playback
+#          2. !blocktts - Add user to blacklist, no need to restart TTS. Example: !blocktts nickname
+#          3. !unblocktts - Remove user from blacklist, no need to restart TTS. Example: !unblocktts nickname
+#          4. !addwltts - Add user to whitelist, no need to restart TTS. Example: !addwltts nickname
+#          5. !delwltts - Remove user from whitelist, no need to restart TTS. Example: !delwltts nickname
+#
+#    tts_prefix - Set up first letter for TTS from chat messages
+#    prefix_allow_mod - True or False: if True moderators can use TTS with prefix.
+#    prefix_allow_sub - True or False: if True subscribers can use TTS with prefix.
+#    prefix_allow_vip - True or False: if True vip users can use TTS with prefix.
+#    prefix_allow_all - True or False: if True ALL users can use TTS with prefix.
+#
+#
+#
+#########################################################
+
+authorization:
+     channel: channel
+     bot_username: username
+     bot_token: oauth:*************************
+
+general_options:
+     tts_reward_id:
+
+voice_settings:
+     voice_filter: en-US-Wavenet
+     low_speaking_rate: 0.8
+     high_speaking_rate: 1.2
+     low_pitch: -5
+     high_pitch: 5
+
+features:
+     use_whitelist: True
+     use_mod_commands: True
+
+prefix_options:
+     tts_prefix: \
+     prefix_allow_mod: True
+     prefix_allow_sub: True
+     prefix_allow_vip: True
+     prefix_allow_all: False

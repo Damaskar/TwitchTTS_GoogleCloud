@@ -1,0 +1,20 @@
+###################### Description ######################
+#
+# List of blocked users
+#
+# If user in blocklist try to activate TTS - nothing will happen.
+#
+# This list supports two ways to fill names:
+#   In one row:
+#       [nickname1, nickname2, nickname3]
+#
+#   Or each nickname on new row
+#       - nickname1
+#       - nickname2
+#       - nickname3
+#
+#########################################################
+
+- nickname1
+- nickname2
+- nickname3

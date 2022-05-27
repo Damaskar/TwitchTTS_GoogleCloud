@@ -1,0 +1,20 @@
+###################### Description ######################
+#
+# List of excluded words
+#
+# If TTS message have one of words from this list - they will be removed from TTS message.
+#
+# This list supports two ways to fill words:
+#   In one row:
+#       [excludedword1, excludedword2, excludedword3]
+#
+#   Or each word on new row
+#       - excludedword1
+#       - excludedword2
+#       - excludedword3
+#
+#########################################################
+
+- excludedword1
+- excludedword2
+- excludedword3
