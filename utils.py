@@ -42,7 +42,7 @@ def exclude_from_message(message):
     """Remove words presented in exclude_words from message"""
 
     for word in Fc.exclude_words:
-        message = message.replace(word, '')
+        message = message.replace(word, '').replace(Fc.tts_prefix, '')
     if message != '':
         return message
     else:
