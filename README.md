@@ -26,6 +26,7 @@ TTS bot for Twitch chat for user messages and channel rewards, using Google Clou
 
 
 * TTS for chat message with prefix
+  - You can choose to use TTS prefix or not
   - You can change tts_prefix in `config.yaml`
   - You have options to allow this function for different types of users^
     - List of users in `whitelist_users.yaml` if you enable it with use_whitelist option
@@ -48,7 +49,6 @@ TTS bot for Twitch chat for user messages and channel rewards, using Google Clou
 * Chat commands for moderators and broadcaster:
   - Enable chat commands in `config.yaml`
   - Available commands:
-    - !stoptts - Stop current TTS playback
     - !blocktts - Add user to blacklist, no need to restart TTS. Example: `!blocktts nickname`
     - !unblocktts - Remove user from blacklist, no need to restart TTS. Example: `!unblocktts nickname`
     - !addwltts - Add user to whitelist, no need to restart TTS. Example: `!addwltts nickname`
