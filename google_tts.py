@@ -57,8 +57,3 @@ def google_tts(json, text, voice, speaking_rate, pitch):
         play_obj.wait_done()
     except Exception as e:
         print('\nError:', e)
-
-def stop_tts():
-    """Stop current playback"""
-
-    play_obj.stop()

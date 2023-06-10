@@ -3,7 +3,7 @@ import utils
 import random
 import yaml
 from configs import FileConfigs as Fc
-from google_tts import google_tts, stop_tts
+from google_tts import google_tts
 
 
 class MessageHandler:
@@ -22,7 +22,6 @@ class MessageHandler:
         self.redeemed = any(item for item in tags if item['key'] == 'custom-reward-id')
 
         self.command_actions = {
-            '!stoptts': self.command_stoptts,
             '!blocktts': self.command_blocktts,
             '!unblocktts': self.command_unblocktts,
             '!addwltts': self.command_addwltts,
@@ -89,9 +88,6 @@ class MessageHandler:
             if self.mod['value'] == '1' or self.name == Fc.channel:
                 return True
         return False
-
-    def command_stoptts(self):
-        stop_tts()
 
     def command_blocktts(self):
         blck_message = self.message[len('!blocktts '):]
