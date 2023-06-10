@@ -40,6 +40,7 @@
 #          4. !addwltts - Add user to whitelist, no need to restart TTS. Example: !addwltts nickname
 #          5. !delwltts - Remove user from whitelist, no need to restart TTS. Example: !delwltts nickname
 #
+#    no_prefix - True or False: If True Prefix is active for TTS
 #    tts_prefix - Set up first letter for TTS from chat messages
 #    prefix_allow_mod - True or False: if True moderators can use TTS with prefix.
 #    prefix_allow_sub - True or False: if True subscribers can use TTS with prefix.
@@ -70,6 +71,7 @@ features:
      use_mod_commands: True
 
 prefix_options:
+     no_prefix: False
      tts_prefix: \
      prefix_allow_mod: True
      prefix_allow_sub: True
