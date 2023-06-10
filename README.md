@@ -141,6 +141,10 @@ apt-get install ffmpeg libavcodec-extra
 
 
 # Changelog:
+- **v1.1**, 10.06.2023
+  - Completely rewrite code.
+  - Add new feature to be able TTS all messages.
+  - Multiple bugs fixed.
 - **v1.0**, 27.05.2022
   - Initial release
 
