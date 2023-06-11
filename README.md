@@ -145,6 +145,7 @@ apt-get install ffmpeg libavcodec-extra
 # Changelog:
 - **v1.2**, 11.06.2023
   - Added "Show reward ID", "Volume" and "Sample rate" options to config.
+  - Deprecated simpleaudio was replaced with pyaudio for python 3.9+
 - **v1.1**, 10.06.2023
   - Completely rewrote code.
   - Added new feature to be able TTS all messages.
