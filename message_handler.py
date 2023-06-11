@@ -10,7 +10,6 @@ class MessageHandler:
     """
     Class for handling messages to activate TTS or mod commands.
     """
-
     def __init__(self, message, tags):
         """
         Initialise variables for user messages and commands
