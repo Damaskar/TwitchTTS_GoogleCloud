@@ -24,7 +24,7 @@ def google_list(json):
         print('\nError:', e)
 
 
-def google_tts(json, text, voice, speaking_rate, pitch):
+def google_tts(json, text, voice, speaking_rate, pitch, volume, sample_rate):
     """TTS function"""
 
     global play_obj
@@ -40,7 +40,9 @@ def google_tts(json, text, voice, speaking_rate, pitch):
     audio_config = texttospeech.AudioConfig(
         audio_encoding=texttospeech.AudioEncoding.MP3,
         speaking_rate=speaking_rate,
-        pitch=pitch)
+        pitch=pitch,
+        volume_gain_db=volume,
+        sample_rate_hertz=sample_rate)
 
     response = client.synthesize_speech(
         input=synthesis_input, voice=voice, audio_config=audio_config)
@@ -53,8 +55,3 @@ def google_tts(json, text, voice, speaking_rate, pitch):
         playback.play(audio)
     except Exception as e:
         print('\nError:', e)
-
-def stop_tts():
-    """Stop current playback"""
-
-    play_obj.stop()
