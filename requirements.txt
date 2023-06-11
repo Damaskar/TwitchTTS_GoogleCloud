@@ -1,6 +1,6 @@
 pyyaml
 pydub
-simpleaudio
+pyaudio
 irc
 google-cloud-texttospeech
 google-cloud-core

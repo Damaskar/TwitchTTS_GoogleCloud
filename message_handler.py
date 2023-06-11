@@ -7,7 +7,14 @@ from google_tts import google_tts
 
 
 class MessageHandler:
+    """
+    Class for handling messages to activate TTS or mod commands.
+    """
+
     def __init__(self, message, tags):
+        """
+        Initialise variables for user messages and commands
+        """
         self.message = message
         self.tags = tags
 
@@ -29,6 +36,9 @@ class MessageHandler:
         }
 
     def message_conditions(self):
+        """
+        Check if message is valid for TTS
+        """
         if self.redeemed:
             reward_id = next(item for item in self.tags if item['key'] == 'custom-reward-id')
             if Fc.tts_reward_id in reward_id.values():
@@ -40,12 +50,18 @@ class MessageHandler:
         return False
 
     def reward_print(self):
-        if self.redeemed:
+        """
+        Print reward ID if it's not matched with reward ID in config
+        """
+        if self.redeemed and Fc.show_reward_id:
             reward_id = next(item for item in self.tags if item['key'] == 'custom-reward-id')
             if Fc.tts_reward_id not in reward_id.values():
-                print('received reward id:', self.reward_id.get('value'))
+                print('received reward id:', reward_id.get('value'))
 
     def config_conditions(self):
+        """
+        Check if config settings allow TTS message to play
+        """
         if Fc.prefix_allow_all \
                 or Fc.prefix_allow_sub and self.sub is not None \
                 or Fc.prefix_allow_mod and self.mod['value'] == '1' \
@@ -56,15 +72,21 @@ class MessageHandler:
         return False
 
     def banned_conditions(self):
-        if self.name in Fc.blocked_users:
+        """
+        Check if user is banned or banned words present in message
+        """
+        if self.message_conditions() is True and self.name in Fc.blocked_users:
             print('Message blocked. User', self.name, 'present in blocked_users.yaml')
             return True
-        if any(word in self.message.lower() for word in Fc.banned_words):
+        if self.message_conditions() is True and any(word in self.message.lower() for word in Fc.banned_words):
             print('Message blocked. Banned word founded in user', self.name, 'message. Text:', self.message)
             return True
         return False
 
     def user_conditions(self):
+        """
+        Return voice settings for user presented in users.yaml or for unknown users
+        """
         if self.name in Fc.users.keys():
             user_voices = random.choice(utils.user_voices(Fc.users[self.name]['voice_filter']))
             user_speaking_rate = utils.random_float(Fc.users[self.name]['low_speaking_rate'],
@@ -84,12 +106,18 @@ class MessageHandler:
                     'text': default_message}
 
     def command_conditions(self):
+        """
+        Check if command prefix "!" was used in message
+        """
         if self.message[self.message_start][:1] == '!' and Fc.use_mod_commands is True:
             if self.mod['value'] == '1' or self.name == Fc.channel:
                 return True
         return False
 
     def command_blocktts(self):
+        """
+        Handle !blocktts command to add user to blocked_user.yaml
+        """
         blck_message = self.message[len('!blocktts '):]
         if blck_message != Fc.channel and blck_message not in Fc.blocked_users \
                 and blck_message != '':
@@ -99,6 +127,9 @@ class MessageHandler:
                 yaml.dump(Fc.blocked_users, f)
 
     def command_unblocktts(self):
+        """
+        Handle !unblocktts command to remove user from blocked_user.yaml
+        """
         unblck_message = self.message[len('!unblocktts '):]
         if unblck_message in Fc.blocked_users and unblck_message != '':
             Fc.blocked_users.remove(unblck_message)
@@ -107,6 +138,9 @@ class MessageHandler:
                 yaml.dump(Fc.blocked_users, f)
 
     def command_addwltts(self):
+        """
+        Handle !addwltts command to add user to whitelist_users.yaml
+        """
         addwl_message = self.message[len('!addwltts '):]
         if addwl_message != Fc.channel and addwl_message not in Fc.whitelist_users \
                 and addwl_message != '':
@@ -116,6 +150,9 @@ class MessageHandler:
                 yaml.dump(Fc.whitelist_users, f)
 
     def command_delwltts(self):
+        """
+        Handle !delwltts command to remove user from whitelist_users.yaml
+        """
         delwl_message = self.message[len('!delwltts '):]
         if delwl_message in Fc.whitelist_users and delwl_message != '':
             Fc.whitelist_users.remove(delwl_message)
@@ -124,6 +161,9 @@ class MessageHandler:
                 yaml.dump(Fc.whitelist_users, f)
 
     def action_handler(self):
+        """
+        Main handler to check all conditions and play TTS message, or execute mod command.
+        """
         self.reward_print()
         if self.banned_conditions() is False and self.message_conditions() is True and self.config_conditions() is True:
             voice = self.user_conditions().get('voice')
@@ -132,7 +172,8 @@ class MessageHandler:
             text = self.user_conditions().get('text')
 
             print(self.name, '-', text, voice, speaking_rate, pitch)
-            google_tts('configs/gcp.json', text, voice, float(speaking_rate), float(pitch))
+            google_tts('configs/gcp.json', text, voice, float(speaking_rate), float(pitch), float(Fc.volume),
+                       int(Fc.sample_rate))
 
         elif self.command_conditions() is True:
             for command, action in self.command_actions.items():

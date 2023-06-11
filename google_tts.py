@@ -1,8 +1,8 @@
 import os
-import simpleaudio
 from typing import List
 from io import BytesIO
 from pydub import AudioSegment
+from pydub import playback
 from google.cloud import texttospeech
 
 
@@ -24,7 +24,7 @@ def google_list(json):
         print('\nError:', e)
 
 
-def google_tts(json, text, voice, speaking_rate, pitch):
+def google_tts(json, text, voice, speaking_rate, pitch, volume, sample_rate):
     """TTS function"""
 
     global play_obj
@@ -40,7 +40,9 @@ def google_tts(json, text, voice, speaking_rate, pitch):
     audio_config = texttospeech.AudioConfig(
         audio_encoding=texttospeech.AudioEncoding.MP3,
         speaking_rate=speaking_rate,
-        pitch=pitch)
+        pitch=pitch,
+        volume_gain_db=volume,
+        sample_rate_hertz=sample_rate)
 
     response = client.synthesize_speech(
         input=synthesis_input, voice=voice, audio_config=audio_config)
@@ -50,10 +52,6 @@ def google_tts(json, text, voice, speaking_rate, pitch):
         fp.write(response.audio_content)
         fp.seek(0)
         audio = AudioSegment.from_mp3(fp)
-        play_obj = simpleaudio.play_buffer(audio.raw_data,
-                                           num_channels=audio.channels,
-                                           bytes_per_sample=audio.sample_width,
-                                           sample_rate=audio.frame_rate)
-        play_obj.wait_done()
+        playback.play(audio)
     except Exception as e:
         print('\nError:', e)

@@ -11,6 +11,9 @@ class FileConfigs:
             bot_username = config['authorization']['bot_username'].lower()
             bot_token = config['authorization']['bot_token'].lower()
             tts_reward_id = config['general_options']['tts_reward_id']
+            show_reward_id = config['general_options']['show_reward_id']
+            volume = config['voice_settings']['volume']
+            sample_rate = config['voice_settings']['sample_rate']
             voice_filter = config['voice_settings']['voice_filter']
             low_speaking_rate = config['voice_settings']['low_speaking_rate']
             high_speaking_rate = config['voice_settings']['high_speaking_rate']

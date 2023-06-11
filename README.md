@@ -23,9 +23,12 @@ TTS bot for Twitch chat for user messages and channel rewards, using Google Clou
   - If you need flat speaking rate or pitch set same number for low and high options
   - Available pitch range: -20 to 20
   - Available speaking rate range: 0.25 to 4
+  - You can set volume of TTS in config. Availible option is float between -96.0 and 16.0.
+  - Also you can manually set sample rate in herz if you have problems with sound artifacts or noise. Most common values is - 44100, 48000 etc.
 
 
 * TTS for chat message with prefix
+  - You can choose to use TTS prefix or not
   - You can change tts_prefix in `config.yaml`
   - You have options to allow this function for different types of users^
     - List of users in `whitelist_users.yaml` if you enable it with use_whitelist option
@@ -39,10 +42,10 @@ TTS bot for Twitch chat for user messages and channel rewards, using Google Clou
   - If TTS message have one of words from this list - they will be removed from TTS message.
 
 * List of banned words - `banned_words.yaml`
-  - If TTS message have one of words from this list - nothing will happen.
+  - If TTS message have one of words from this list - TTS will not activate.
  
 * Block users - `blocked_users.yaml`
-  - If user in blocklist try to activate TTS - nothing will happen.
+  - If user in blocklist try to activate TTS - TTS will not activate.
    
 
 * Chat commands for moderators and broadcaster:
@@ -131,7 +134,7 @@ apt-get install ffmpeg libavcodec-extra
 3. Replace example gcp.json with your Service account key from [requirements](#Requirements:) in **TTS Folder\configs**. 
 4. Get Twitch Chat OAuth Token from [Here](https://twitchapps.com/tmi/)
 5. Put your channel, username and OAuth Token into **configs/config.yaml** (you can use any text editor).
-6. Fill .yaml files with your settings, every .yaml file has commends to help you with syntax.
+6. Fill .yaml files with your settings, every .yaml file has comments to help you with syntax.
 7. If you want to use channel points reward:
     - Start TwitchTTS.exe and wait until it join channel
     - Use your desired points reward in chat
@@ -140,10 +143,13 @@ apt-get install ffmpeg libavcodec-extra
 
 
 # Changelog:
+- **v1.2**, 11.06.2023
+  - Added "Show reward ID", "Volume" and "Sample rate" options to config.
 - **v1.1**, 10.06.2023
-  - Completely rewrite code.
-  - Add new feature to be able TTS all messages.
+  - Completely rewrote code.
+  - Added new feature to be able TTS all messages.
   - Multiple bugs fixed.
+  - Removed deprecated "!stoptts" command.
 - **v1.0**, 27.05.2022
   - Initial release
 

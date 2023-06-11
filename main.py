@@ -3,15 +3,16 @@ import threading
 import time
 from pprint import pprint
 
+from message_handler import MessageHandler
 import utils
 from configs import FileConfigs as Fc
-from message_handler import MessageHandler
 
 
 class ChatBot(irc.bot.SingleServerIRCBot):
     """
     Base IRC class to work with Twitch chat implemented by irc library
     """
+
     def __init__(self, username, token, channel):
         """
         Connect to twitch irc server.
