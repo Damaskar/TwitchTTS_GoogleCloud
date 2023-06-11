@@ -18,6 +18,7 @@ class MessageHandler:
         self.tags = tags
 
         self.reward_id = None
+        self.reward_activated = False
         self.message_start = 0
         self.display_name = next(item for item in tags if item['key'] == 'display-name')
         self.name = self.display_name['value'].lower()
@@ -56,6 +57,10 @@ class MessageHandler:
             reward_id = next(item for item in self.tags if item['key'] == 'custom-reward-id')
             if Fc.tts_reward_id not in reward_id.values():
                 print('received reward id:', reward_id.get('value'))
+        elif self.redeemed:
+            reward_id = next(item for item in self.tags if item['key'] == 'custom-reward-id')
+            if Fc.tts_reward_id in reward_id.values():
+                self.reward_activated = True
 
     def config_conditions(self):
         """
@@ -66,7 +71,8 @@ class MessageHandler:
                 or Fc.prefix_allow_mod and self.mod['value'] == '1' \
                 or Fc.prefix_allow_vip and self.vip is not None \
                 or Fc.use_whitelist and self.name in Fc.whitelist_users \
-                or self.name == Fc.channel:
+                or self.name == Fc.channel \
+                or self.reward_activated:
             return True
         return False
 
