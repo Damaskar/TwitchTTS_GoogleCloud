@@ -12,7 +12,7 @@ def default_voices():
     """Function to get random voice for unknown user"""
 
     if isinstance(Fc.voice_filter, str):
-        return [voice for voice in list_voices() if Fc.voice_filter in voice]
+        return random.choice([voice for voice in list_voices() if Fc.voice_filter in voice])
     elif isinstance(Fc.voice_filter, list):
         v = random.choice(Fc.voice_filter)
         return random.choice([voice for voice in list_voices() if v in voice])
