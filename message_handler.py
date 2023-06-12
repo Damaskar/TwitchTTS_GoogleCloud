@@ -93,7 +93,7 @@ class MessageHandler:
         Return voice settings for user presented in users.yaml or for unknown users
         """
         if self.name in Fc.users.keys():
-            user_voices = random.choice(utils.user_voices(Fc.users[self.name]['voice_filter']))
+            user_voices = utils.user_voices(Fc.users[self.name]['voice_filter'])
             user_speaking_rate = utils.random_float(Fc.users[self.name]['low_speaking_rate'],
                                                     Fc.users[self.name]['high_speaking_rate'])
             user_pitch = utils.random_float(Fc.users[self.name]['low_pitch'], Fc.users[self.name]['high_pitch'])
@@ -102,7 +102,7 @@ class MessageHandler:
             return {'voice': user_voices, 'speaking_rate': user_speaking_rate, 'pitch': user_pitch,
                     'text': user_message}
         else:
-            default_voices = random.choice(utils.default_voices())
+            default_voices = utils.default_voices()
             default_speaking_rate = utils.random_float(Fc.low_speaking_rate, Fc.high_speaking_rate)
             default_pitch = utils.random_float(Fc.low_pitch, Fc.high_pitch)
             default_message = utils.exclude_from_message(self.message)

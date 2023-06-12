@@ -15,7 +15,7 @@ def default_voices():
         return [voice for voice in list_voices() if Fc.voice_filter in voice]
     elif isinstance(Fc.voice_filter, list):
         v = random.choice(Fc.voice_filter)
-        return [voice for voice in list_voices() if v in voice]
+        return random.choice([voice for voice in list_voices() if v in voice])
     else:
         return None
 
@@ -27,7 +27,7 @@ def user_voices(user_voice_filter):
         return random.choice([voice for voice in list_voices() if user_voice_filter in voice])
     elif isinstance(user_voice_filter, list):
         v = random.choice(user_voice_filter)
-        return [voice for voice in list_voices() if v in voice]
+        return random.choice([voice for voice in list_voices() if v in voice])
     else:
         return None
 
