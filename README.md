@@ -143,6 +143,11 @@ apt-get install ffmpeg libavcodec-extra
 
 
 # Changelog:
+- **v1.2.1**, 13.06.2023
+  - Fixed bug with voice selection 
+  - Added default values of voice parameters if some of it is not set up in config 
+  - Added better function to list filtered default voices on start 
+  - Added exception handling in main TTS function for debugging
 - **v1.2**, 11.06.2023
   - Added "Show reward ID", "Volume" and "Sample rate" options to config.
   - Deprecated simpleaudio was replaced with pyaudio for python 3.9+
