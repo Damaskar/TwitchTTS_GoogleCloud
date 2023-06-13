@@ -177,8 +177,11 @@ class MessageHandler:
             text = self.user_conditions().get('text')
 
             print(self.name, '-', text, voice, speaking_rate, pitch)
-            google_tts('configs/gcp.json', text, voice, float(speaking_rate), float(pitch), float(Fc.volume),
-                       int(Fc.sample_rate))
+            try:
+                google_tts('configs/gcp.json', text, voice, float(speaking_rate), float(pitch), float(Fc.volume),
+                           int(Fc.sample_rate))
+            except Exception as e:
+                print('\nError:', e)
 
         elif self.command_conditions() is True:
             for command, action in self.command_actions.items():

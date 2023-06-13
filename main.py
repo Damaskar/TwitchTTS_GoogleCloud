@@ -62,8 +62,8 @@ if __name__ == '__main__':
     try:
         print('\nChannel:', Fc.channel, '\nBot username:', Fc.bot_username, '\nBot token:',
               Fc.bot_token[6:9] + '*' * (len(Fc.bot_token) - 9), '\nTTS Reward ID:', Fc.tts_reward_id)
-        print('\nFiltered voices for TTS:')
-        pprint(utils.default_voices())
+        print('\nFiltered default voices for TTS:')
+        pprint(utils.selected_voices())
 
         """Initialize bot and speach threads"""
 

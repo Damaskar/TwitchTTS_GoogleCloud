@@ -8,6 +8,20 @@ def list_voices():
     return google_list('configs/gcp.json')
 
 
+def selected_voices():
+    """Function to list all available default voices"""
+
+    if isinstance(Fc.voice_filter, str):
+        return [voice for voice in list_voices() if Fc.voice_filter in voice]
+    elif isinstance(Fc.voice_filter, list):
+        voices = []
+        for v in Fc.voice_filter:
+            voices.extend([voice for voice in list_voices() if v in voice])
+        return voices
+    else:
+        return 'en-US-Wavenet-A'
+
+
 def default_voices():
     """Function to get random voice for unknown user"""
 
@@ -17,7 +31,7 @@ def default_voices():
         v = random.choice(Fc.voice_filter)
         return random.choice([voice for voice in list_voices() if v in voice])
     else:
-        return None
+        return 'en-US-Wavenet-A'
 
 
 def user_voices(user_voice_filter):
@@ -29,13 +43,15 @@ def user_voices(user_voice_filter):
         v = random.choice(user_voice_filter)
         return random.choice([voice for voice in list_voices() if v in voice])
     else:
-        return None
+        return 'en-US-Wavenet-A'
 
 
 def random_float(low, high):
     """Function to get random float from range"""
-
-    return round(random.uniform(low, high), 2)
+    if low is not None and high is not None:
+        return round(random.uniform(low, high), 2)
+    else:
+        return 1
 
 
 def exclude_from_message(message):
