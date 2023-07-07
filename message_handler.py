@@ -57,7 +57,7 @@ class MessageHandler:
             reward_id = next(item for item in self.tags if item['key'] == 'custom-reward-id')
             if Fc.tts_reward_id not in reward_id.values():
                 print('received reward id:', reward_id.get('value'))
-        elif self.redeemed:
+        if self.redeemed:
             reward_id = next(item for item in self.tags if item['key'] == 'custom-reward-id')
             if Fc.tts_reward_id in reward_id.values():
                 self.reward_activated = True
